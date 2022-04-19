@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SingleImg from "../../images/forum1.png";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import CommentUser from "../../images/commentuser.png";
 export default function ReplyCommnet() {
@@ -8,6 +8,7 @@ export default function ReplyCommnet() {
   const [singleTopic, setSingleTopic] = useState(null);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  const [singleDisc, setSingleDisc] = useState(null);
 
   const getAllComments = () => {
     axios
@@ -18,6 +19,16 @@ export default function ReplyCommnet() {
         setComments(res.data);
       });
   };
+
+  useEffect(() => {
+    axios
+      .post("http://localhost/fortah-backend/topic/getSingleDiscussion", {
+        id: parseInt(forumid),
+      })
+      .then((res) => {
+        setSingleDisc(res.data);
+      });
+  }, [forumid]);
 
   useEffect(() => {
     getAllComments();
@@ -61,8 +72,8 @@ export default function ReplyCommnet() {
           </div>
           <div className="info">
             <div className="flex ai-center">
-              <p className="title fs-26 fw-semi">Discussion |</p>
-              <p className="subtitle fs-26 fw-semi">Training |</p>
+              <Link to={'/client/forum'} className="title fs-26 fw-semi">Discussion |</Link>
+              <Link to={`/client/forum/${forumid}`} className="subtitle fs-26 fw-semi">{singleDisc !== null && singleDisc.title} |</Link>
               <p className="fr-title fs-16 fw-semi">
                 {singleTopic !== null && singleTopic.title}
               </p>

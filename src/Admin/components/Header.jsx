@@ -2,9 +2,14 @@ import React from "react";
 import Bell from "../../images/bell.svg";
 import User from "../../images/user.png";
 import ArrowDown from "../../images/chevron-down.svg";
-export default function Header() {
+import Ham from "../../images/ham.png";
+export default function Header({ showSide }) {
   return (
     <div className="header flex jc-end ai-center">
+      <div className="ham" onClick={showSide}>
+        <img src={Ham} alt="" />
+      </div>
+
       <div className="notification flex ai-center jc-center">
         <img src={Bell} />
       </div>

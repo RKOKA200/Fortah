@@ -57,7 +57,7 @@ a {
 body {
   background-color: #161616;
 }
-._1ceqH{
+._1ceqH {
   width: 100% !important;
 }
 .fw-light {
@@ -290,6 +290,12 @@ body {
   left: 0;
   padding: 87px 45px 0;
 }
+.sidebar .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: none;
+}
 .sidebar::after {
   content: "";
   position: absolute;
@@ -309,6 +315,12 @@ body {
   padding: 1.748% 4.545% 1.748% 0;
   background-color: #161616;
   z-index: 1;
+}
+.header .ham {
+  position: absolute;
+  left: 4.545%;
+  cursor: pointer;
+  display: none;
 }
 .header .notification {
   width: 38px;
@@ -458,7 +470,7 @@ body {
 }
 .single-forum .enter {
   position: relative;
-  margin-top: -12px
+  margin-top: -12px;
 }
 .single-forum .enter::before {
   content: "";
@@ -1135,17 +1147,6 @@ textarea {
   background: rgba(162, 255, 0, 0.3);
 }
 
-
-
-
-
-
-
-
-
-
-
- 
 @media screen and (min-device-width: 1301px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
   .home {
     padding: 5% 4% 0;
@@ -1221,7 +1222,7 @@ textarea {
     max-width: calc(100% - 320px);
     margin-left: 320px;
     margin-top: 78px;
-    padding: 2% 1.5% 0 ;
+    padding: 2% 1.5% 0;
   }
 
   .education .title {
@@ -1272,7 +1273,7 @@ textarea {
     line-height: 1.5rem;
   }
 
-  .single-education .items{
+  .single-education .items {
     margin-top: 30px;
     column-gap: 2%;
   }
@@ -1285,7 +1286,7 @@ textarea {
     /* margin-top: -15px; */
     width: 100%;
   }
-  
+
   .single-lesson .start .title {
     font-size: 1.2rem;
     /* padding-top: 12px; */
@@ -1316,11 +1317,11 @@ textarea {
     font-size: 1rem;
   }
 
-  .single-lesson .item .left .comments .items .item .top{
+  .single-lesson .item .left .comments .items .item .top {
     width: 100%;
   }
 
-  .single-lesson .item .left .comments .items .item img{
+  .single-lesson .item .left .comments .items .item img {
     width: 41.6px;
     height: 41.6px;
   }
@@ -1330,7 +1331,13 @@ textarea {
     font-size: 0.875rem;
   }
 
-  .single-lesson .item .left .comments .items .item .reply-comment-btn:first-child {
+  .single-lesson
+    .item
+    .left
+    .comments
+    .items
+    .item
+    .reply-comment-btn:first-child {
     padding: 11px 42px;
   }
 
@@ -1339,7 +1346,7 @@ textarea {
     height: 12px;
   }
 
-  .forum .title{
+  .forum .title {
     margin-top: -20px;
     font-size: 1.4rem;
   }
@@ -1403,17 +1410,9 @@ textarea {
   .reply-comment .item .left {
     width: 50px;
   }
-} 
-
-
-
-
-
-
-
+}
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1300px) and (-webkit-min-device-pixel-ratio: 1) {
-  
   .header {
     max-width: calc(100% - 260px);
     height: 70px;
@@ -1428,7 +1427,7 @@ textarea {
     margin-bottom: 20px;
   }
 
-  .sidebar-links .link p{
+  .sidebar-links .link p {
     font-size: 0.775rem;
   }
 
@@ -1476,7 +1475,7 @@ textarea {
     height: 20px;
     margin: 0 10px;
   }
-  
+
   .single-education .start .subtitle {
     font-size: 1rem;
   }
@@ -1513,7 +1512,7 @@ textarea {
     display: none;
   }
 
-  .single-lesson .start #first-span{
+  .single-lesson .start #first-span {
     display: none;
   }
 
@@ -1530,18 +1529,19 @@ textarea {
     font-size: 0.875rem;
     margin-top: 1px;
   }
-  
-  .single-lesson .item .left{
+
+  .single-lesson .item .left {
     max-width: calc(100% - 260px);
     margin-right: 13px;
   }
 
-  .single-lesson .item .right{
+  .single-lesson .item .right {
     max-width: 260px;
     padding: 11px 11px;
   }
 
-  .single-lesson .item .right .video .texts .title, .desc {
+  .single-lesson .item .right .video .texts .title,
+  .desc {
     font-size: 0.5rem;
     line-height: 1rem;
   }
@@ -1550,8 +1550,8 @@ textarea {
     margin-bottom: 0;
   }
 
-  .single-lesson .item .right .video .img video  {
-    width: 67px !important; 
+  .single-lesson .item .right .video .img video {
+    width: 67px !important;
     height: 67px !important;
   }
 
@@ -1585,7 +1585,13 @@ textarea {
     margin-top: 10px;
   }
 
-  .single-lesson .item .left .comments .items .item .reply-comment-btn:first-child {
+  .single-lesson
+    .item
+    .left
+    .comments
+    .items
+    .item
+    .reply-comment-btn:first-child {
     font-size: 0.7rem;
     padding: 8px 22px;
   }
@@ -1637,15 +1643,33 @@ textarea {
     margin-left: 20px;
   }
 
-
-
   .reply-comment .item .info .comments {
     margin-top: 0;
     padding-top: 10px;
   }
-
-
-
-  
 }
-  
+
+@media (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebar-show {
+    display: block;
+    z-index: 100;
+    background-color: #161616;
+  }
+  .sidebar .close {
+    display: block;
+    cursor: pointer;
+  }
+  .client-body {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .header {
+    max-width: 100%;
+  }
+  .header .ham {
+    display: block;
+  }
+}

@@ -40,7 +40,6 @@ export default function AdSingleLesson() {
     formdata.append("audio", file);
     formdata.append("comment_id", parseInt(commentId));
 
-
     axios
       .post(
         "http://localhost/fortah-backend/education/createReplyAdmin",
@@ -48,10 +47,10 @@ export default function AdSingleLesson() {
       )
       .then((res) => {
         console.log(res.data);
-        getAllReplies()
+        getAllReplies();
         setCommentId(null);
-        setVoice(false)
-        handleReset()
+        setVoice(false);
+        handleReset();
       });
   }
 
@@ -72,7 +71,6 @@ export default function AdSingleLesson() {
     };
     setAudioDetails(reset);
   }
-
 
   const getAllReplies = () => {
     axios
@@ -111,7 +109,7 @@ export default function AdSingleLesson() {
         setReplyTit("");
         setReplyText(false);
         setCommentId(null);
-        getAllReplies()
+        getAllReplies();
       });
   };
 
@@ -199,25 +197,25 @@ export default function AdSingleLesson() {
             consequat. Duis autem vel eum iriure.
           </p> */}
           </div>
-          <div className="comments flex fd-column ai-start" style={{width:"100%"}} >
+          <div
+            className="comments flex fd-column ai-start"
+            style={{ width: "100%" }}
+          >
             <p className="title fs-26 fw-semi">32 comments</p>
             {voice && (
-         
-        <Recorder
-          style={{width:"100%"}}
-          record={true}
-          title={"New recording"}
-          audioURL={audioDetails.url}
-          showUIAudio
-          handleAudioStop={(data) => handleAudioStop(data)}
-          handleAudioUpload={(data) => handleAudioUpload(data)}
-          handleCountDown={(data) => handleCountDown(data)}
-          handleReset={() => handleReset()}
-          mimeTypeToUseWhenRecording={`audio/webm`} // For specific mimetype.
-        />
-        
-
-      )}
+              <Recorder
+                style={{ width: "100%" }}
+                record={true}
+                title={"New recording"}
+                audioURL={audioDetails.url}
+                showUIAudio
+                handleAudioStop={(data) => handleAudioStop(data)}
+                handleAudioUpload={(data) => handleAudioUpload(data)}
+                handleCountDown={(data) => handleCountDown(data)}
+                handleReset={() => handleReset()}
+                mimeTypeToUseWhenRecording={`audio/webm`} // For specific mimetype.
+              />
+            )}
             {replyText && (
               <>
                 <div className="input flex ai-center">
@@ -258,11 +256,12 @@ export default function AdSingleLesson() {
                       </div>
                     </div>
                     <div className="flex ai-center">
-                      <button className="reply-comment-btn fs-16 fw-regular"
-                              onClick={() => {
-                                setVoice(true);
-                                setCommentId(item.id);
-                              }}
+                      <button
+                        className="reply-comment-btn fs-16 fw-regular"
+                        onClick={() => {
+                          setVoice(true);
+                          setCommentId(item.id);
+                        }}
                       >
                         {" "}
                         <img src={Mic} alt="" /> Voice
@@ -282,26 +281,29 @@ export default function AdSingleLesson() {
                     .filter((reply) => reply.comment_id === item.id)
                     .map((item2) => (
                       <>
-                      {item2.reply_tytpe === "1" ? 
-                     <div className="item flex fd-column ai-end " style={{marginBottom:"40px"}} >
-                     <div className="top flex ai-center">
-                       <div className="img">
-                         <img src={CommentUser} className="img-res" />
-                       </div>
-                       <div className="texts">
-                         <p className="title fs-16 fw-regular">
-                           Reply
-                         </p>
-                         <p className="text fs-14 fw-light">
-                           {item2.title}
-                         </p>
-                       </div>
-                     </div>
-                   </div>
-                   :
-                   <audio src={`http://localhost/fortah-backend/files/${item2.title}`} controls ></audio>
-                    }
-   
+                        {item2.reply_tytpe === "1" ? (
+                          <div
+                            className="item flex fd-column ai-end "
+                            style={{ marginBottom: "40px" }}
+                          >
+                            <div className="top flex ai-center">
+                              <div className="img">
+                                <img src={CommentUser} className="img-res" />
+                              </div>
+                              <div className="texts">
+                                <p className="title fs-16 fw-regular">Reply</p>
+                                <p className="text fs-14 fw-light">
+                                  {item2.title}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <audio
+                            src={`http://localhost/fortah-backend/files/${item2.title}`}
+                            controls
+                          ></audio>
+                        )}
                       </>
                     ))}
                 </>

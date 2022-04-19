@@ -4,21 +4,21 @@ import EdIcon from "../../images/ed_icon.svg";
 import EdIconWhite from "../../images/ed_icon_white.svg";
 
 import ForumIcon from "../../images/forum_icon.svg";
-import ForumIconWhite from "../../images/forum_icon_white.svg"
+import ForumIconWhite from "../../images/forum_icon_white.svg";
 
-import MacroIcon from "../../images/macro_icon.svg"
+import MacroIcon from "../../images/macro_icon.svg";
 import MacroIconWhite from "../../images/macro_icon_white.svg";
 
 import SettingsIcon from "../../images/settings_icon.svg";
 import SettingsIconWhite from "../../images/settings_icon_white.svg";
 
 import { useLocation, Link } from "react-router-dom";
-
-export default function Sidebar() {
+import Close from "../../images/close.png";
+import { useNavigate } from "react-router-dom";
+export default function Sidebar({ isOpen, closeSide }) {
   const [active, setActive] = useState("client");
-
   const { pathname } = useLocation();
-
+  const navigate = useNavigate();
   React.useEffect(() => {
     if (pathname === "/client") {
       setActive("client");
@@ -31,8 +31,17 @@ export default function Sidebar() {
     }
   }, [pathname]);
 
+  const logout = () => {
+    navigate("/");
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("type");
+  };
   return (
-    <div className="sidebar">
+    <div className={isOpen ? "sidebar sidebar-show" : "sidebar"}>
+      <div className="close" onClick={closeSide}>
+        <img src={Close} alt="" />
+      </div>
       <div>
         <img src={Logo} className="img-res" alt="Logo" />
       </div>
@@ -94,6 +103,7 @@ export default function Sidebar() {
           <p className="fs-16 fw-regular">Settings</p>
         </Link>
       </nav>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }

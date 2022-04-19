@@ -44,7 +44,7 @@ export default function AdSingleForum() {
           </div>
           <div className="info">
             <div className="flex ai-center">
-              <p className="title fs-26 fw-semi">Discussion |</p>
+              <Link to={'/admin/forum'} className="title fs-26 fw-semi">Discussion |</Link>
               <p className="subtitle fs-22 fw-semi">
                 {singleDisc !== null && singleDisc.title}
               </p>

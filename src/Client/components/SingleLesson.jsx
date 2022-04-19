@@ -11,6 +11,18 @@ export default function SingleLesson() {
   const [education, setEducation] = useState({});
   const [desc, setDesc] = useState("");
   const [comments, setComments] = useState([]);
+  const [replies, setReplies] = useState([]);
+
+  const getAllReplies = () => {
+    axios
+      .post("http://localhost/fortah-backend/education/getAllReplies")
+      .then((res) => {
+        setReplies(res.data);
+      });
+  };
+  useEffect(() => {
+    getAllReplies();
+  }, [lessonid]);
 
   const getAllComments = () => {
     axios
@@ -23,8 +35,8 @@ export default function SingleLesson() {
   };
 
   useEffect(() => {
-    getAllComments()
-  },[lessonid])
+    getAllComments();
+  }, [lessonid]);
 
   const getEducation = () => {
     axios
@@ -44,7 +56,7 @@ export default function SingleLesson() {
       )
       .then((res) => {
         getAllComments();
-        setDesc("")
+        setDesc("");
       });
   };
 
@@ -146,20 +158,45 @@ export default function SingleLesson() {
             </button>
             <div className="items">
               {comments.map((item) => (
-                <div className="item flex fd-column ai-end ">
-                  <div className="top flex ai-center">
-                    <div className="img">
-                      <img src={CommentUser} className="img-res" />
-                    </div>
-                    <div className="texts">
-                      <p className="title fs-16 fw-regular">Profile 1</p>
-                      <p className="text fs-14 fw-light">{item.title}</p>
+                <>
+                  <div className="item flex fd-column ai-end ">
+                    <div className="top flex ai-center">
+                      <div className="img">
+                        <img src={CommentUser} className="img-res" />
+                      </div>
+                      <div className="texts">
+                        <p className="title fs-16 fw-regular">Profile 1</p>
+                        <p className="text fs-14 fw-light">{item.title}</p>
+                      </div>
                     </div>
                   </div>
-                  <button className="reply-comment-btn fs-16 fw-regular">
-                    Reply
-                  </button>
-                </div>
+                  {replies
+                    .filter((reply) => reply.comment_id === item.id)
+                    .map((item2) => (
+                      <>
+                        {item2.reply_tytpe === "1" ? (
+                          <div className="item flex fd-column ai-end ">
+                            <div className="top flex ai-center">
+                              <div className="img">
+                                <img src={CommentUser} className="img-res" />
+                              </div>
+                              <div className="texts">
+                                <p className="title fs-16 fw-regular">Reply</p>
+                                <p className="text fs-14 fw-light">
+                                  {item2.title}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <audio
+                            src={`http://localhost/fortah-backend/files/${item2.title}`}
+                            controls
+                          ></audio>
+                        )}
+                      </>
+                    ))}
+                </>
               ))}
             </div>
           </div>
@@ -167,7 +204,7 @@ export default function SingleLesson() {
         <div className="right flex fd-column">
           {lessons.map((item) => (
             <Link
-              to={`/admin/${educationid}/${item.id}`}
+              to={`/client/${educationid}/${item.id}`}
               className="video flex ai-center"
             >
               <div className="img">

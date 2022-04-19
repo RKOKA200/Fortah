@@ -5,13 +5,39 @@ import { Recorder } from "react-voice-recorder";
 import "react-voice-recorder/dist/index.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import CommentUser from "../../images/commentuser.png";
 export default function AdReplyComment() {
   const { commentid, forumid } = useParams();
   const [comments, setComments] = useState([]);
   const [voice, setVoice] = useState(false);
   const [title, setTitle] = useState("");
+  const [singleDisc, setSingleDisc] = useState(null);
+  const [singleTopic, setSingleTopic] = useState(null);
+  useEffect(() => {
+    axios
+      .post("http://localhost/fortah-backend/topic/getSingleDiscussion", {
+        id: parseInt(forumid),
+      })
+      .then((res) => {
+        setSingleDisc(res.data);
+      });
+  }, [forumid]);
+
+  const getSingleTopic = () => {
+    axios
+      .post("http://localhost/fortah-backend/topic/getSingleTopic", {
+        id: parseInt(commentid),
+      })
+      .then((res) => {
+        setSingleTopic(res.data);
+      });
+  };
+
+  useEffect(() => {
+    getSingleTopic();
+  }, []);
+
   const getAllComments = () => {
     axios
       .post("http://localhost/fortah-backend/topic/getComments", {
@@ -33,7 +59,7 @@ export default function AdReplyComment() {
         title,
         topic_id: commentid,
         type: 1,
-        user_type: parseInt(localStorage.getItem("type"))
+        user_type: parseInt(localStorage.getItem("type")),
       })
       .then((res) => {
         setTitle("");
@@ -71,7 +97,7 @@ export default function AdReplyComment() {
       )
       .then((res) => {
         console.log(res.data);
-        getAllComments()
+        getAllComments();
       });
   }
 
@@ -98,12 +124,31 @@ export default function AdReplyComment() {
       <div className="enter flex ai-center jc-spaceb" style={{ width: "100%" }}>
         <div className="item flex ai-center">
           <div className="flex">
-            <img className="img-res" src={SingleImg} alt="" />
+            <img
+              className="img-res"
+              src={
+                singleTopic !== null
+                  ? `http://localhost/fortah-backend/files/${singleTopic.image}`
+                  : ""
+              }
+              style={{ width: "72px", height: "72px" }}
+              alt=""
+            />
           </div>
           <div className="info">
             <div className="flex ai-center">
-              <p className="title fs-26 fw-semi">Discussion |</p>
-              <p className="subtitle fs-26 fw-semi">Training </p>
+              <Link to={"/admin/forum"} className="title fs-26 fw-semi">
+                Discussion |
+              </Link>
+              <Link
+                to={`/admin/forum/${forumid}`}
+                className="subtitle fs-26 fw-semi"
+              >
+                {singleDisc !== null && singleDisc.title} |{" "}
+              </Link>
+              <p className="fr-title fs-16 fw-semi">
+                {singleTopic !== null && singleTopic.title}
+              </p>
             </div>
             <p className="comments fs-14 fw-light">5 comments</p>
           </div>
@@ -117,25 +162,13 @@ export default function AdReplyComment() {
             <div className="img">
               <img src={CommentUser} className="img-res" />
             </div>
-            <p className="fs-16 fw-regular">{commentid.user_type === "1" ? "Admin" : "User" }</p>
+            <p className="fs-16 fw-regular">
+              {commentid.user_type === "1" ? "Admin" : "User"}
+            </p>
           </div>
           <div className="right">
             <p className="fs-16 fw-regular">
-              Hey guys! I am subscribed to jps and Id like to hear your opinion
-              one of his advice He is a big advocate of full body training and I
-              would like to adapt his 3 time per week full body routine but he
-              says that you need to have difffrent rotations. My gym is pretty
-              minimalistic ( no fancy machines) and I can only use a smith,
-              barbells, dumbbells and some basic machines like a leg curl.
-              That's the reason why I cant put together two rotations and now i
-              wonder if the exact same routine perfomed three times a week will
-              slow down my progress. Lorem ipsum dolor sit amet, consectetuer
-              adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-              laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim
-              veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-              nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure
-              dolor in hendrerit in vulputate velit esse molestie consequat, vel
-              illum dolore Thanks in advance!
+              {singleTopic !== null && singleTopic.description}
             </p>
           </div>
         </div>
@@ -150,23 +183,32 @@ export default function AdReplyComment() {
                     <img src={CommentUser} className="img-res" />
                   </div>
                   <div className="texts">
-                      <audio controls src={`http://localhost/fortah-backend/files/${item.title}`} />
+                    <audio
+                      controls
+                      src={`http://localhost/fortah-backend/files/${item.title}`}
+                    />
                   </div>
                 </div>
               </div>
             </div>
           ) : (
             <div className="comments flex fd-column ai-start">
-              <div className={item.user_type === "1" ? "item flex fd-column ai-end" :  "item flex fd-column ai-start " } >
+              <div
+                className={
+                  item.user_type === "1"
+                    ? "item flex fd-column ai-end"
+                    : "item flex fd-column ai-start "
+                }
+              >
                 <div className="top flex ai-center">
                   <div className="img">
                     <img src={CommentUser} className="img-res" />
                   </div>
                   <div className="texts">
-                    <p className="title fs-16 fw-regular">{item.user_type === "1" ? "Admin" : "User" }</p>
-                    <p className="text fs-14 fw-light">
-                        {item.title}
+                    <p className="title fs-16 fw-regular">
+                      {item.user_type === "1" ? "Admin" : "User"}
                     </p>
+                    <p className="text fs-14 fw-light">{item.title}</p>
                   </div>
                 </div>
               </div>

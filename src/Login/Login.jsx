@@ -2,6 +2,7 @@ import Half from "../images/half-logo.png";
 import Logo from "../images/logo.png";
 import { useState } from "react";
 import Email from "../images/email.svg";
+import Lock from "../images/lock.svg"
 import Eye from "../images/eye.svg";
 import Eye2 from "../images/eye-hide.svg";
 import axios from "axios"
@@ -85,7 +86,7 @@ export default function Login({history}) {
               </div>
             </div>
             <div className="input flex ai-center">
-              <img src={Email} alt="" />
+              <img src={Lock} alt="" />
               <div className="input-desc flex fd-column ai-start">
                 <label className="fs-14 fw-semi" htmlFor="pass">
                   Password

@@ -68,7 +68,7 @@ export default function AdEducationalSystem() {
               <div className="cover">
                 <img className="img-res" src={`http://localhost/fortah-backend/files/${education.image}`} alt="" />
               </div>
-              <p className="fs-18 fw-regular">{education.title}</p>
+              <p className="fs-16 fw-regular">{education.title}</p>
             </Link>
           ))}
         </div>

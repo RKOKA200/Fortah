@@ -1,10 +1,21 @@
-import React from "react";
-import Cat1 from "../../images/Category1.png";
-import Cat2 from "../../images/Category2.png";
-import Cat3 from "../../images/Category3.png";
-import Cat4 from "../../images/Category4.png";
-import Cat5 from "../../images/Category5.png";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 export default function EducationalSystem() {
+  const [educations, setEducations] = useState([]);
+
+  const getAllEducation = () => {
+    axios
+      .get("http://localhost/fortah-backend/education/getAllEducation")
+      .then((res) => {
+        setEducations(res.data);
+      });
+  };
+
+  React.useEffect(() => {
+    getAllEducation();
+  }, []);
+
   return (
     <div className="education">
       <p className="title fs-26 fw-semi">Educational Sections</p>
@@ -13,42 +24,21 @@ export default function EducationalSystem() {
       </p>
 
       <div className="items">
-        <div className="item flex fd-column ai-center">
-          <div className="cover">
-            <img className="img-res" src={Cat1} alt="" />
-          </div>
-          <p className="fs-18 fw-regular">
-            Introduction and Purpose of the curriculum
-          </p>
-        </div>
-
-        <div className="item flex fd-column ai-center">
-          <div className="cover">
-            <img className="img-res" src={Cat2} alt="" />
-          </div>
-          <p className="fs-18 fw-regular">Stimulus and Recovery</p>
-        </div>
-
-        <div className="item flex fd-column ai-center">
-          <div className="cover">
-            <img className="img-res" src={Cat3} alt="" />
-          </div>
-          <p className="fs-18 fw-regular">Exercise Selection Principles</p>
-        </div>
-
-        <div className="item flex fd-column ai-center">
-          <div className="cover">
-            <img className="img-res" src={Cat4} alt="" />
-          </div>
-          <p className="fs-18 fw-regular">Muscle Physiology</p>
-        </div>
-
-        <div className="item flex fd-column ai-center">
-          <div className="cover">
-            <img className="img-res" src={Cat5} alt="" />
-          </div>
-          <p className="fs-18 fw-regular">Strength & Resistance Profile</p>
-        </div>
+        {educations.map((item) => (
+          <Link
+            to={`/client/${item.id}`}
+            className="item flex fd-column ai-center"
+          >
+            <div className="cover">
+              <img
+                className="img-res"
+                src={`http://localhost/fortah-backend/files/${item.image}`}
+                alt=""
+              />
+            </div>
+            <p className="fs-18 fw-regular">{item.title}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );

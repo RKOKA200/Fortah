@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Camera from "../../images/camera.png"
+import VideoCamera from "../../images/video-camera.png"
 import { useParams , Link} from "react-router-dom";
 export default function AdSingleEducation() {
   const [addNew, setAddNew] = useState(false);
@@ -61,9 +63,10 @@ export default function AdSingleEducation() {
             className="add-education-opa"
             onClick={() => setAddNew(false)}
           ></div>
-          <form className="flex fd-column ai-center" onSubmit={createLesson}>
+          <form className="flex fd-column ai-center" id="add-video-form" onSubmit={createLesson}>
+            <p className="title fs-22 fw-semi">Add Video</p>
             <div className="input flex fd-column ai-start">
-              <label htmlFor="">Title</label>
+              <label className="fs-16 fw-regular" htmlFor="">Title</label>
               <input
                 value={title}
                 type="text"
@@ -72,23 +75,49 @@ export default function AdSingleEducation() {
                 }}
               />
             </div>
-            <label htmlFor="">Choose Video</label>
-            <input
-              type="file"
-              accept="video/*"
-              onChange={(e) => {
-                setVideo(e.target.files[0]);
-              }}
-            />
-            <label htmlFor="">Choose Thumbnail</label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                setImage(e.target.files[0]);
-              }}
-            />
-            <button>Add Lesson</button>
+            <div className="video-thumbnail-parent">
+              <div className="left">
+                {/* <label className="fs-16 fw-regular" htmlFor="">Attach Video</label> */}
+                <label className="fs-14 fw-regular file-label" htmlFor="input-file-tag-video">
+                  <div className="camera-icon">
+                    <img  src={VideoCamera}></img>
+                  </div>
+                  <p>
+                    Choose Video 
+                  </p>
+                  <input
+                    className="input-file-tag"
+                    id="input-file-tag-video"
+                    type="file"
+                    accept="video/*"
+                    onChange={(e) => {
+                      setVideo(e.target.files[0]);
+                    }}
+                  />
+                </label>
+              </div>
+              <div className="right">
+                {/* <label className="fs-16 fw-regular" htmlFor="">Attach Thumbnail</label> */}
+                <label className="fs-14 fw-regular file-label" htmlFor="input-file-tag-thumbnail">
+                  <div className="camera-icon">
+                    <img  src={Camera}></img>
+                  </div>
+                  <input
+                    className="input-file-tag"
+                    id="input-file-tag-thumbnail"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      setImage(e.target.files[0]);
+                    }}
+                  />
+                  <p>
+                    Choose Thumbnail 
+                  </p>
+                </label>
+              </div> 
+            </div> 
+            <button className="fw-regular fs-14">Add Lesson</button>
           </form>
         </div>
       )}
@@ -119,7 +148,7 @@ export default function AdSingleEducation() {
                   poster={`http://localhost/fortah-backend/files/${lesson.thumbnail}`}
                 />
               </div>
-              <p className="fs-18 fw-regular">{lesson.title}</p>
+              <p className="fs-16 fw-regular">{lesson.title}</p>
             </Link>
           ))}
         </div>

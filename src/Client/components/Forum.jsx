@@ -1,50 +1,41 @@
-import React from 'react'
-import Disc from "../../images/forum1.png"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 export default function Forum() {
+  const [discussions, setDiscussions] = useState([]);
+
+  const getAllDiscussions = () => {
+    axios
+      .get("http://localhost/fortah-backend/topic/getAllDiscussion")
+      .then((res) => {
+        setDiscussions(res.data);
+      });
+  };
+
+  useEffect(() => {
+    getAllDiscussions();
+  }, []);
+
   return (
-    <div className='forum'>
-        <p className="title fs-26 fw-semi">Discussion</p>
-        <div className="items flex fd-column ai-start">
-            <div className="item flex ai-center">
-                <div>
-                  <img src={Disc} className="img-res" />
-                </div>
-              <div className="texts">
-                <p className='title fs-24 fw-semi' >Training</p>
-                <p className="comments fs-14 fw-regular ">19 comments</p>
-              </div>
+    <div id="client-forum-title" className="forum">
+      <p  className="title fs-26 fw-semi">Discussion</p>
+      <div className="items flex fd-column ai-start">
+        {discussions.map((item) => (
+          <Link to={`/client/forum/${item.id}`} className="item flex ai-center">
+            <div>
+              <img
+                style={{ width: "100px", height: "100px" }}
+                src={`http://localhost/fortah-backend/files/${item.cover}`}
+                className="img-res"
+              />
             </div>
-
-            <div className="item flex ai-center">
-                <div>
-                  <img src={Disc} className="img-res" />
-                </div>
-              <div className="texts">
-                <p className='title fs-24 fw-semi' >Nutrition</p>
-                <p className="comments fs-14 fw-regular ">19 comments</p>
-              </div>
+            <div className="texts">
+              <p className="title fs-24 fw-semi"> {item.title} </p>
+              <p className="comments fs-14 fw-regular ">19 comments</p>
             </div>
-
-            <div className="item flex ai-center">
-                <div>
-                  <img src={Disc} className="img-res" />
-                </div>
-              <div className="texts">
-                <p className='title fs-24 fw-semi' >Equipments</p>
-                <p className="comments fs-14 fw-regular ">19 comments</p>
-              </div>
-            </div>
-
-                        <div className="item flex ai-center">
-                <div>
-                  <img src={Disc} className="img-res" />
-                </div>
-              <div className="texts">
-                <p className='title fs-24 fw-semi' >Others</p>
-                <p className="comments fs-14 fw-regular ">19 comments</p>
-              </div>
-            </div>
-        </div>
+          </Link>
+        ))}
+      </div>
     </div>
-  )
+  );
 }

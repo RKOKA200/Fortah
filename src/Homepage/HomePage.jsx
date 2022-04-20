@@ -17,7 +17,7 @@ export default function HomePage() {
           resistance training, and how that information can be applied in the
           gym floor.
         </p>
-        <p className="text fs-16 fw-light">
+        <p id="second-paragraph" className="text fs-16 fw-light">
           We believe every individual deserves to have a high level of education
           which unfortunately in the fitness industry is severely lacking
           specially when it comes to beginners. Rather our goal is to deliver

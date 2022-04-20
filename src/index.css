@@ -1222,7 +1222,7 @@ textarea {
   }
 
   .home .left {
-    margin-right: 15%;
+    margin-right: 5%;
   }
 
   .home .left img {
@@ -1251,7 +1251,7 @@ textarea {
   }
 
   .home .right img {
-    width: 90%;
+    width: 100%;
   }
 
   .login {
@@ -1482,6 +1482,22 @@ textarea {
 }
 
 @media screen and (min-device-width: 1024px) and (max-device-width: 1300px) and (-webkit-min-device-pixel-ratio: 1) {
+  .home {
+    flex-direction: column;
+  }
+
+  .home .left {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .home .right {
+    width: 10%;
+    position: absolute;
+    right: 0;
+    margin-right: 8%;
+  }
+  
   .header {
     max-width: calc(100% - 260px);
     height: 70px;
@@ -2005,23 +2021,24 @@ textarea {
     width: 100%;
   }
 
+  .home .left  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .home .right {
     position: absolute;
-    top: 8.8%;
-    width: 100%;
-    right: 7%;
-    z-index: -1;
-    display: flex;
-    justify-content: end;
+    top: 30%;
+    width: 88%;
+    max-width: 88%;
   }
 
   .home .left {
     z-index: 100;
+    margin-right: 0;
   }
 
-  .home .right img{
-    width: 10%;
-  }
 
   .home .left .title {
     font-size: 2rem;
@@ -2029,17 +2046,52 @@ textarea {
   } 
 
   .home .left .text {
-    font-size: 0.875rem;
-    margin-top: 30px;
+    display: none;
   }
 
+
   .home .left .login-btn {
-    margin-top: 30px;
+    margin-top: 0px;
     padding: 20px;
     width: 100%;
     text-align: center;
-    margin-bottom: 30px;
+    position: absolute;
+    bottom: 0;
   }
+
+  .login .logo {
+    align-self: center;
+  }
+
+  .login .main .login-btn {
+    position: fixed;
+    bottom: 0;
+  }
+
+  .login .main-reg .register .inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .login .main-reg .register .inputs .input {
+    margin-bottom: 20px;
+  }
+
+  .login .main-reg .register .reg-btn {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .login .half {
+    opacity: 0.2;
+  }
+
+  .login .main .input:first-child {
+    margin-top: 50px;
+  }
+
 
   .header .user .text {
     display: none;

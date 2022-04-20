@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import CommentUser from "../../images/commentuser.png";
+import AdminPic from "../../images/admin.png";
 export default function AdReplyComment() {
   const { commentid, forumid } = useParams();
   const [comments, setComments] = useState([]);
@@ -125,6 +126,7 @@ export default function AdReplyComment() {
         <div className="item flex ai-center">
           <div className="flex">
             <img
+              id="disc-img2"
               className="img-res"
               src={
                 singleTopic !== null
@@ -138,13 +140,13 @@ export default function AdReplyComment() {
           <div className="info">
             <div className="flex ai-center">
               <Link to={"/admin/forum"} className="title fs-26 fw-semi">
-                Discussion |
+                Discussion 
               </Link>
               <Link
                 to={`/admin/forum/${forumid}`}
                 className="subtitle fs-26 fw-semi"
               >
-                {singleDisc !== null && singleDisc.title} |{" "}
+                {singleDisc !== null && singleDisc.title} {" "}
               </Link>
               <p className="fr-title fs-16 fw-semi">
                 {singleTopic !== null && singleTopic.title}
@@ -156,11 +158,15 @@ export default function AdReplyComment() {
       </div>
 
       <div className="item flex fd-column ai-start">
-        <p className="date fs-16 fw-regular">January 16, 2022 at 12:02pm</p>
+        {/* <p className="date fs-16 fw-regular">January 16, 2022 at 12:02pm</p> */}
         <div className="main flex ai-start">
           <div className="left flex fd-column ai-center ">
             <div className="img">
-              <img src={CommentUser} className="img-res" />
+              <img
+                src={CommentUser}
+                className="img-res"
+                style={{ width: "72px", height: "72px" }}
+              />
             </div>
             <p className="fs-16 fw-regular">
               {commentid.user_type === "1" ? "Admin" : "User"}
@@ -180,10 +186,17 @@ export default function AdReplyComment() {
               <div className="item flex fd-column ai-end ">
                 <div className="top flex ai-center">
                   <div className="img">
-                    <img src={CommentUser} className="img-res" />
+                    <img
+                      src={item.user_type === "1" ? AdminPic : CommentUser}
+                      className="img-res"
+                    />
                   </div>
                   <div className="texts">
+                    <p className="title fs-16 fw-regular">
+                      {item.user_type === "1" ? "Admin" : "User"}
+                    </p>
                     <audio
+                      class="audio-class"
                       controls
                       src={`http://localhost/fortah-backend/files/${item.title}`}
                     />
@@ -202,7 +215,10 @@ export default function AdReplyComment() {
               >
                 <div className="top flex ai-center">
                   <div className="img">
-                    <img src={CommentUser} className="img-res" />
+                    <img
+                      src={item.user_type === "1" ? AdminPic : CommentUser}
+                      className="img-res"
+                    />
                   </div>
                   <div className="texts">
                     <p className="title fs-16 fw-regular">

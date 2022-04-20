@@ -54,7 +54,7 @@ export default function SingleEducation() {
                 alt=""
               />
             </div>
-            <p className="fs-18 fw-regular">{item.title}</p>
+            <p className="fs-16 fw-regular">{item.title}</p>
           </Link>
         ))}
       </div>

@@ -6,6 +6,7 @@ import ForumIcon from "../../images/forum_icon.svg";
 import ForumIconWhite from "../../images/forum_icon_white.svg";
 import SettingsIcon from "../../images/settings_icon.svg";
 import SettingsIconWhite from "../../images/settings_icon_white.svg";
+import LogOutIconWhite from "../../images/logout_white.png"
 import { useLocation, Link } from "react-router-dom";
 import Close from "../../images/close.png";
 import { useNavigate } from "react-router-dom";
@@ -83,7 +84,13 @@ export default function Sidebar({ isOpen, closeSide }) {
           <p className="fs-16 fw-regular">Settings</p>
         </Link>
       </nav>
-      <button onClick={logout}>Logout</button>
+      <button className="link flex ai-center" onClick={logout} > 
+        <img
+          style={{ marginRight: "20px", width: "24.55px", height: "24.55px"}}
+          src={LogOutIconWhite}
+        />
+          Logout
+      </button>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Vid from "../../images/vid1.jpg";
 import CoverLesson from "../../images/coverlesson.jpg";
 import CommentUser from "../../images/commentuser.png";
+import AdminPic from "../../images/admin.png"
 import Mic from "../../images/Mic.svg";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
@@ -188,14 +189,6 @@ export default function AdSingleLesson() {
             <p className="title fs-26 fw-semi">
               {singleLesson && singleLesson.title}
             </p>
-            {/* <p className="desc fs-16 fw-light">
-            Breath cintroll with diagraph , legs 90/90, supline Lorem ipsum
-            dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-            nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-            volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-            ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-            consequat. Duis autem vel eum iriure.
-          </p> */}
           </div>
           <div
             className="comments flex fd-column ai-start"
@@ -251,7 +244,7 @@ export default function AdSingleLesson() {
                         <img src={CommentUser} className="img-res" />
                       </div>
                       <div className="texts">
-                        <p className="title fs-16 fw-regular">Profile 1</p>
+                        <p className="title fs-16 fw-regular">User</p>
                         <p className="text fs-14 fw-light">{item.title}</p>
                       </div>
                     </div>
@@ -288,10 +281,10 @@ export default function AdSingleLesson() {
                           >
                             <div className="top flex ai-center">
                               <div className="img">
-                                <img src={CommentUser} className="img-res" />
+                                <img src={AdminPic} className="img-res" />
                               </div>
                               <div className="texts">
-                                <p className="title fs-16 fw-regular">Reply</p>
+                                <p className="title fs-16 fw-regular">Admin</p>
                                 <p className="text fs-14 fw-light">
                                   {item2.title}
                                 </p>
@@ -299,10 +292,23 @@ export default function AdSingleLesson() {
                             </div>
                           </div>
                         ) : (
-                          <audio
-                            src={`http://localhost/fortah-backend/files/${item2.title}`}
-                            controls
-                          ></audio>
+                          <div
+                            className="item flex fd-column ai-end "
+                            style={{ marginBottom: "40px" }}
+                          >
+                            <div className="top flex ai-center">
+                              <div className="img">
+                                <img src={AdminPic} className="img-res" />
+                              </div>
+                              <div className="texts">
+                                    <p className="title fs-16 fw-regular">Admin</p>
+                                <audio className="audio-class"
+                                  src={`http://localhost/fortah-backend/files/${item2.title}`}
+                                  controls
+                                ></audio>
+                              </div>
+                            </div>
+                          </div>
                         )}
                       </>
                     ))}

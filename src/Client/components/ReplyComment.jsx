@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SingleImg from "../../images/forum1.png";
+import AdminPic from "../../images/admin.png";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import CommentUser from "../../images/commentuser.png";
@@ -68,12 +69,29 @@ export default function ReplyCommnet() {
       <div className="enter flex ai-center jc-spaceb" style={{ width: "100%" }}>
         <div className="item flex ai-center">
           <div className="flex">
-            <img className="img-res" src={SingleImg} alt="" />
+            <img
+              id="disc-img"
+              className="img-res"
+              style={{ width: "72px", height: "72px" }}
+              src={
+                singleTopic !== null
+                  ? `http://localhost/fortah-backend/files/${singleTopic.image}`
+                  : ""
+              }
+              alt=""
+            />
           </div>
           <div className="info">
             <div className="flex ai-center">
-              <Link to={'/client/forum'} className="title fs-26 fw-semi">Discussion |</Link>
-              <Link to={`/client/forum/${forumid}`} className="subtitle fs-26 fw-semi">{singleDisc !== null && singleDisc.title} |</Link>
+              <Link to={"/client/forum"} className="title fs-26 fw-semi">
+                Discussion 
+              </Link>
+              <Link
+                to={`/client/forum/${forumid}`}
+                className="subtitle fs-26 fw-semi"
+              >
+                {singleDisc !== null && singleDisc.title} 
+              </Link>
               <p className="fr-title fs-16 fw-semi">
                 {singleTopic !== null && singleTopic.title}
               </p>
@@ -89,14 +107,14 @@ export default function ReplyCommnet() {
           <div className="left flex fd-column ai-center ">
             <div className="img">
               <img
-                src={
-                  singleTopic !== null &&
-                  `http://localhost/fortah-backend/files/${singleTopic.image}`
-                }
+                src={CommentUser}
                 className="img-res"
+                style={{ width: "72px", height: "72px" }}
               />
             </div>
-            {/* <p className="fs-16 fw-regular">Rei Koka</p> */}
+            <p className="fs-16 fw-regular">
+              {commentid.user_type === "1" ? "Admin" : "User"}
+            </p>
           </div>
           <div className="right">
             <p className="fs-16 fw-regular">
@@ -113,10 +131,14 @@ export default function ReplyCommnet() {
               <div className="item flex fd-column ai-end ">
                 <div className="top flex ai-center">
                   <div className="img">
-                    <img src={CommentUser} className="img-res" />
+                    <img src={AdminPic} className="img-res" />
                   </div>
                   <div className="texts">
+                    <p className="title fs-16 fw-regular">
+                      {item.user_type === "1" ? "Admin" : "User"}
+                    </p>
                     <audio
+                      class="audio-class"
                       controls
                       src={`http://localhost/fortah-backend/files/${item.title}`}
                     />
@@ -135,10 +157,15 @@ export default function ReplyCommnet() {
               >
                 <div className="top flex ai-center">
                   <div className="img">
-                    <img src={CommentUser} className="img-res" />
+                    <img
+                      src={item.user_type === "1" ? AdminPic : CommentUser}
+                      className="img-res"
+                    />
                   </div>
                   <div className="texts">
-                    <p className="title fs-16 fw-regular">{item.user_type === "1" ? "Admin" : "User" }</p>
+                    <p className="title fs-16 fw-regular">
+                      {item.user_type === "1" ? "Admin" : "User"}
+                    </p>
                     <p className="text fs-14 fw-light">{item.title}</p>
                   </div>
                 </div>

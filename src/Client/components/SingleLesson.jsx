@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Vid from "../../images/vid1.jpg";
 import CoverLesson from "../../images/coverlesson.jpg";
 import CommentUser from "../../images/commentuser.png";
+import AdminPic from "../../images/admin.png"
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 export default function SingleLesson() {
@@ -165,7 +166,7 @@ export default function SingleLesson() {
                         <img src={CommentUser} className="img-res" />
                       </div>
                       <div className="texts">
-                        <p className="title fs-16 fw-regular">Profile 1</p>
+                      <p className="title fs-16 fw-regular">{item.user_type === "1" ? "Admin" : "User" }</p>
                         <p className="text fs-14 fw-light">{item.title}</p>
                       </div>
                     </div>
@@ -175,13 +176,13 @@ export default function SingleLesson() {
                     .map((item2) => (
                       <>
                         {item2.reply_tytpe === "1" ? (
-                          <div className="item flex fd-column ai-end ">
+                          <div className="item flex fd-column ai-center jc-start">
                             <div className="top flex ai-center">
                               <div className="img">
                                 <img src={CommentUser} className="img-res" />
                               </div>
                               <div className="texts">
-                                <p className="title fs-16 fw-regular">Reply</p>
+                                <p className="title fs-16 fw-regular">Admin</p>
                                 <p className="text fs-14 fw-light">
                                   {item2.title}
                                 </p>
@@ -189,10 +190,23 @@ export default function SingleLesson() {
                             </div>
                           </div>
                         ) : (
-                          <audio
-                            src={`http://localhost/fortah-backend/files/${item2.title}`}
-                            controls
-                          ></audio>
+                          <div
+                            className="item flex fd-column ai-end "
+                            style={{ marginBottom: "40px" }}
+                          >
+                            <div className="top flex ai-center">
+                              <div className="img">
+                                <img src={AdminPic} className="img-res" />
+                              </div>
+                              <div className="texts">
+                                    <p className="title fs-16 fw-regular">Admin</p>
+                                <audio className="audio-class"
+                                  src={`http://localhost/fortah-backend/files/${item2.title}`}
+                                  controls
+                                ></audio>
+                              </div>
+                            </div>
+                          </div>
                         )}
                       </>
                     ))}

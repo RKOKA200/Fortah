@@ -60,6 +60,10 @@ body {
 ._1ceqH {
   width: 100% !important;
 }
+.audio-class {
+  margin-top: 10px;
+}
+
 .fw-light {
   font-weight: 300;
 }
@@ -369,6 +373,7 @@ body {
   margin-top: 117px;
   width: 100%;
 }
+
 .sidebar-links .link {
   padding: 16px 20px;
   background-color: transparent;
@@ -376,6 +381,28 @@ body {
   margin-bottom: 35px;
   text-decoration: none;
   color: white;
+}
+
+.sidebar button {
+  padding: 16px 20px;
+  background-color: transparent;
+  border-radius: 8px;
+  margin-bottom: 35px;
+  text-decoration: none;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal;
+  width: 100%;
+}
+
+.sidebar button:active {
+  padding: 16px 20px;
+  background-color: #a2ff00;
+  border-radius: 8px;
+  color: #161616;
 }
 
 .sidebar-links .active {
@@ -425,6 +452,7 @@ body {
   opacity: 0.6;
   transition: ease-in 0.1s;
 }
+
 .forum .title {
   color: white;
 }
@@ -445,6 +473,10 @@ body {
   width: 100%;
   height: 1px;
   background-color: #707070;
+}
+.items .item .top {
+  width: 100%;
+  margin-bottom: 20px;
 }
 /* .forum .items .item::after {
   content: "";
@@ -622,7 +654,7 @@ body {
   width: 50px;
 }
 .reply-comment .item .left p {
-  color: white;
+  color: #a2ff00;
   margin-top: 5px;
 }
 .reply-comment .item .left .img {
@@ -973,10 +1005,10 @@ textarea {
 }
 
 .enter .delete-topic-btn {
-  background-color: transparent;
-  color: #a2ff00;
+  background-color: #a2ff00;
+  color: #212121;
   outline: none;
-  border: 1px solid #a2ff00;
+  border: none;
   padding: 15px 32px;
   border-radius: 8px;
   cursor: pointer;
@@ -1078,6 +1110,42 @@ textarea {
   margin-top: 20px;
   cursor: pointer;
 }
+
+#category-form {
+  height: 350px;
+} 
+
+.category-label {
+  display: flex;
+  align-self: flex-start;
+  height: 20px;
+  align-items: flex-end;
+}
+
+.category-label #category-p {
+  margin-bottom: 0;
+  color: #a2ff00;
+  
+}
+
+.category-label .camera-icon {
+  margin-right: 10px;
+  height: 16px;
+}
+
+.category-label input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#category-form button {
+  margin-top: 40px;
+}
+
 .reply-comment .comments {
   margin-top: 22px;
   position: relative;
@@ -1092,6 +1160,7 @@ textarea {
 }
 .reply-comment .comments .item .top .texts .title {
   color: #a2ff00;
+  margin-bottom: 5px;
 }
 .reply-comment .comments .item .top .texts .text {
   color: white;
@@ -1436,6 +1505,15 @@ textarea {
     height: 16px;
   }
 
+  .sidebar button img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .sidebar button {
+    font-size: 0.775rem;
+  }
+
   .education .items {
     column-gap: 15px;
     margin-top: 20px;
@@ -1600,6 +1678,10 @@ textarea {
     margin-top: 20px;
   }
 
+  .single-lesson .item .left .comments .items .item:first-child top {
+    width: 100%;
+  }
+
   .forum .title {
     font-size: 1.1rem;
   }
@@ -1672,4 +1754,669 @@ textarea {
   .header .ham {
     display: block;
   }
+
+  .single-lesson .item .left .comments .items .item .top .texts {
+    width: 100%;
+  }
 }
+
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1023px) and (-webkit-min-device-pixel-ratio: 1) {
+
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home .left {
+    width: 100%;
+  }
+
+  .home .right {
+    position: absolute;
+    top: 8.8%;
+    width: 100%;
+    right: 7%;
+    z-index: -1;
+    display: flex;
+    justify-content: end;
+  }
+
+  .home .left {
+    z-index: 100;
+  }
+
+  .home .right img{
+    width: 10%;
+  }
+
+  .home .left .title {
+    font-size: 2rem;
+    text-align: center;
+  } 
+
+  .home .left .text {
+    font-size: 0.875rem;
+    margin-top: 30px;
+  }
+
+  .home .left .login-btn {
+    margin-top: 30px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .education .items {
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 20px;
+  }
+
+  .education .items .item {
+    margin-bottom: 30px;
+  }
+
+  .education .items .item p {
+    font-size: 0.675rem;
+    line-height: 1rem;
+  }
+
+  .single-education .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-education .start .flex {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .single-education .start .title {
+    width: 100%;
+    text-align: center;
+  }    
+
+  .single-education .start .subtitle {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .single-education .start span {
+    display: none;
+  }
+
+  .single-education .start div:last-child {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .single-education .start button:last-child {
+    width: 45%;
+  }
+
+  .single-education .start button:first-child {
+    margin-right: 0;
+    width: 45%;
+  }
+
+  .single-education .items {
+    grid-template-columns: repeat(3, 2fr);
+    column-gap: 20px;
+  }
+
+  .single-education .items .item {
+    margin-bottom: 30px;
+  }
+
+  .single-education .items .item p {
+    font-size: 0.675rem;
+    line-height: 1rem;
+  }
+
+  .single-lesson .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-lesson span {
+    display: none;
+  }
+
+  .single-lesson .title {
+    width: 100%;
+    text-align: center;
+   
+  }
+
+  .single-lesson .start .subtitle {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .single-lesson .start .lesson {
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+
+  .single-lesson .item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-lesson .item .left {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .single-lesson .item .right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .single-lesson .item .left .comments .items .item .top .texts .title {
+    text-align: left;
+  }
+
+  .reply-comment .item #disc-img {
+    display: none;
+  }
+
+  .reply-comment .item #disc-img2 {
+    display: none;
+  }
+
+  .reply-comment .item .info {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .reply-comment .item .info .flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reply-comment .item .info .subtitle {
+    color: white;
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .reply-comment .item .info .fr-title {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .reply-comment .item .info .comments {
+    display: none;
+  }
+  
+  .reply-comment .item .date {
+    display: none;
+  }
+
+  .single-forum .enter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-forum .enter .item .flex img{
+    display: none;
+  }
+
+  .single-forum .enter .item .flex {
+    flex-direction: column;
+  }
+
+  .single-forum .enter .item .flex .subtitle {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .single-forum .item .info .comments {
+    display: none;
+  }
+
+  .enter .delete-topic-btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .enter .create-topic-btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+@media screen and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 1) {
+  .home {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home .left {
+    width: 100%;
+  }
+
+  .home .right {
+    position: absolute;
+    top: 8.8%;
+    width: 100%;
+    right: 7%;
+    z-index: -1;
+    display: flex;
+    justify-content: end;
+  }
+
+  .home .left {
+    z-index: 100;
+  }
+
+  .home .right img{
+    width: 10%;
+  }
+
+  .home .left .title {
+    font-size: 2rem;
+    text-align: center;
+  } 
+
+  .home .left .text {
+    font-size: 0.875rem;
+    margin-top: 30px;
+  }
+
+  .home .left .login-btn {
+    margin-top: 30px;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .header .user .text {
+    display: none;
+  }
+
+  .header .user #the-arrow {
+    display: none;
+  }
+
+  .client-body {
+    padding: 20px;
+  }
+  
+
+  .education .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .education .items {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 20px;
+  }
+
+  .education .title {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  .education .subtitle {
+    text-align: center;
+    font-size: 00.875rem;
+  }
+
+  .education .start button {
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .education .items .item {
+    margin-bottom: 20px;
+  }
+
+  .education .items .item p {
+    font-size: 0.675rem;
+    line-height: 1rem;
+  }
+
+  .single-education .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-education .start .flex {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .single-education .start .title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+  }    
+
+  .single-education .start .subtitle {
+    margin-top: 20px;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .single-education .start span {
+    display: none;
+  }
+
+  .single-education .start div:last-child {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-education .start button:last-child {
+    width: 100%;
+  }
+
+  .single-education .start button:first-child {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .single-education .items {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 20px;
+  }
+
+  .single-education .items .item {
+    margin-bottom: 20px;
+  }
+
+  .single-education .items .item p {
+    font-size: 0.675rem;
+    line-height: 1rem;
+  }
+
+  .add-education form {
+    max-width: 300px;
+    border-radius: 15px;
+  }
+
+  .video-thumbnail-parent {
+    flex-direction: column;
+  }
+
+  .video-thumbnail-parent .left, .right {
+    width: 100%;
+  }
+
+  #add-video-form button {
+    margin-top: 30px;
+  }
+
+  .single-lesson .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-lesson span {
+    display: none;
+  }
+
+  .single-lesson .title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .single-lesson .start .subtitle {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .single-lesson .start .lesson {
+    margin-top: 20px;
+    font-size: 0.6rem;
+    text-align: center;
+  }
+
+  .single-lesson .item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-lesson .item .left {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .single-lesson .item .right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .single-lesson .item .left .comments .items .item .top .texts {
+    margin-left: 10px;
+  }
+
+  .single-lesson .item .left .comments .items .item .top .texts .title {
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  .single-lesson .item .left .comments .items .item .top .texts .text {
+    font-size: 0.675rem;
+  }
+
+  .single-lesson .item .left .comments .items .item div:last-child {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .single-lesson .item .left .comments .items .item .reply-comment-btn:first-child {
+    width: 48%;
+    padding: 8px 12px;
+    font-size: 0.5rem;
+    margin-top: 10px;
+  }
+
+  .single-lesson .item .left .comments .items .item .reply-comment-btn:last-child {
+    width: 48%;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 0.5rem;
+  }
+
+  .audio-class {
+    width: 100%;
+    height: 30px;
+  }
+
+  .reply-comment .item #disc-img {
+    display: none;
+  }
+
+  .reply-comment .item #disc-img2 {
+    display: none;
+  }
+
+  .reply-comment .item .info {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .reply-comment .item .info .flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reply-comment .item .info .subtitle {
+    color: white;
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .reply-comment .item .info .fr-title {
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .reply-comment .item .info .comments {
+    display: none;
+  }
+  
+  .reply-comment .item .date {
+    display: none;
+  }
+
+  .single-forum .enter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .single-forum .enter .item .flex img{
+    display: none;
+  }
+
+  .single-forum .enter .item .flex {
+    flex-direction: column;
+  }
+
+  .single-forum .enter .item .flex .subtitle {
+    margin-top: 20px;
+    font-size: 1.2rem;
+  }
+
+  .single-forum .item .info .comments {
+    display: none;
+  }
+
+  .enter .delete-topic-btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .items .item .top {
+    margin-bottom: 0;
+  }
+
+  .single-lesson .item .left .comments .items .item div:last-child {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .single-lesson .item .left .comments .items .item {
+    margin-bottom: 20px !important;
+  }
+
+  .single-lesson .item .right .video .texts .title, .desc {
+    font-size: 0.5rem;
+    line-height: 1rem;
+    text-align: left;
+  }
+
+
+  .forum .start {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .forum .start div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .forum .start button {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .forum .start button:first-child {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .add-education form .file-label:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .reply-comment .comments .item .top {
+    width: 100%;
+    display: flex;
+    align-items: end !important;
+  }
+
+  .reply-comment .comments .item .top img {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    border: 1px solid #a2ff00;
+  } 
+
+  .reply-comment .comments {
+    margin-top: 0;
+  }
+
+  .reply-comment .comments .item .top .texts {
+    width: 100%;
+  }
+  
+
+  .single-forum .topics .item .left {
+    width: 100%;
+  }
+
+  .single-forum .topics .item .left .title {
+    font-size: 0.6rem;
+    font-weight: normal;
+  }
+
+  .single-forum .topics .item .reply-btn {
+    padding: 15px 20px;
+  }
+
+  .enter .create-topic-btn {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .single-forum .enter .item .flex .title {
+    text-align: center;
+  }
+
+  .single-forum .enter .item .flex .subtitle {
+    margin-left: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .disc-title {
+    text-align: center;
+  }
+
+  #f-title {
+    text-align: left;
+  }
+
+
+}
+
+
+

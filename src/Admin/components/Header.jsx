@@ -18,7 +18,7 @@ export default function Header({ showSide }) {
           <img src={User} alt="" />
         </div>
         <p className="text fs-16 fw-semi">John Doe</p>
-        <img src={ArrowDown} />
+        <img id="the-arrow" src={ArrowDown} />
       </div>
     </div>
   );

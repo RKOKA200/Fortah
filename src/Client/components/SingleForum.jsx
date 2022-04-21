@@ -58,8 +58,12 @@ export default function SingleForum() {
             </div>
             <div className="info">
               <div className="flex ai-center">
-                <Link to={'/client/forum'} className="title fs-26 fw-semi">Discussion </Link>
-                <p className="subtitle fs-26 fw-semi">{singleDisc !== null && singleDisc.title}</p>
+                <Link to={"/client/forum"} className="title fs-26 fw-semi">
+                  Discussion{" "}
+                </Link>
+                <p className="subtitle fs-26 fw-semi">
+                  {singleDisc !== null && singleDisc.title}
+                </p>
               </div>
               <p className="comments fs-14 fw-light">5 comments</p>
             </div>

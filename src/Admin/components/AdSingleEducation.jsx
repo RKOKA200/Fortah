@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Camera from "../../images/camera.png"
-import VideoCamera from "../../images/video-camera.png"
-import { useParams , Link} from "react-router-dom";
+import Camera from "../../images/camera.png";
+import VideoCamera from "../../images/video-camera.png";
+import { useParams, Link } from "react-router-dom";
 export default function AdSingleEducation() {
   const [addNew, setAddNew] = useState(false);
   const [title, setTitle] = useState("");
   const [video, setVideo] = useState("");
-  const [image,setImage] = useState("")
+  const [image, setImage] = useState("");
   const { educationid } = useParams();
   const [lessons, setLessons] = useState([]);
-  const [education,setEducation] = useState({});
+  const [education, setEducation] = useState({});
 
   const getEducation = () => {
     axios
-    .post("http://localhost/fortah-backend/education/getSinlgeProgram", {
-      id: parseInt(educationid),
-    })
-    .then((res) => {
-      setEducation(res.data);
-    });
-  }
+      .post("http://localhost/fortah-backend/education/getSinlgeProgram", {
+        id: parseInt(educationid),
+      })
+      .then((res) => {
+        setEducation(res.data);
+      });
+  };
 
   React.useEffect(() => {
-    getEducation()
-  },[educationid])
-  const getAllLessons =() => {
+    getEducation();
+  }, [educationid]);
+  const getAllLessons = () => {
     axios
       .post("http://localhost/fortah-backend/education/getSingleEducation", {
         id: parseInt(educationid),
@@ -33,10 +33,10 @@ export default function AdSingleEducation() {
       .then((res) => {
         setLessons(res.data);
       });
-  }
+  };
 
   useEffect(() => {
-    getAllLessons()
+    getAllLessons();
   }, [educationid]);
 
   const createLesson = (e) => {
@@ -45,13 +45,13 @@ export default function AdSingleEducation() {
     formdata.append("title", title);
     formdata.append("education_id", educationid);
     formdata.append("image", video);
-    formdata.append("thumbnail",image)
+    formdata.append("thumbnail", image);
 
     axios
       .post("http://localhost/fortah-backend/education/addLesson", formdata)
       .then((res) => {
-        setAddNew(false)
-        getAllLessons()
+        setAddNew(false);
+        getAllLessons();
       });
   };
 
@@ -63,10 +63,16 @@ export default function AdSingleEducation() {
             className="add-education-opa"
             onClick={() => setAddNew(false)}
           ></div>
-          <form className="flex fd-column ai-center" id="add-video-form" onSubmit={createLesson}>
+          <form
+            className="flex fd-column ai-center"
+            id="add-video-form"
+            onSubmit={createLesson}
+          >
             <p className="title fs-22 fw-semi">Add Video</p>
             <div className="input flex fd-column ai-start">
-              <label className="fs-16 fw-regular" htmlFor="">Title</label>
+              <label className="fs-16 fw-regular" htmlFor="">
+                Title
+              </label>
               <input
                 value={title}
                 type="text"
@@ -78,13 +84,14 @@ export default function AdSingleEducation() {
             <div className="video-thumbnail-parent">
               <div className="left">
                 {/* <label className="fs-16 fw-regular" htmlFor="">Attach Video</label> */}
-                <label className="fs-14 fw-regular file-label" htmlFor="input-file-tag-video">
+                <label
+                  className="fs-14 fw-regular file-label"
+                  htmlFor="input-file-tag-video"
+                >
                   <div className="camera-icon">
-                    <img  src={VideoCamera}></img>
+                    <img src={VideoCamera}></img>
                   </div>
-                  <p>
-                    Choose Video 
-                  </p>
+                  <p>Choose Video</p>
                   <input
                     className="input-file-tag"
                     id="input-file-tag-video"
@@ -98,9 +105,12 @@ export default function AdSingleEducation() {
               </div>
               <div className="right">
                 {/* <label className="fs-16 fw-regular" htmlFor="">Attach Thumbnail</label> */}
-                <label className="fs-14 fw-regular file-label" htmlFor="input-file-tag-thumbnail">
+                <label
+                  className="fs-14 fw-regular file-label"
+                  htmlFor="input-file-tag-thumbnail"
+                >
                   <div className="camera-icon">
-                    <img  src={Camera}></img>
+                    <img src={Camera}></img>
                   </div>
                   <input
                     className="input-file-tag"
@@ -111,12 +121,10 @@ export default function AdSingleEducation() {
                       setImage(e.target.files[0]);
                     }}
                   />
-                  <p>
-                    Choose Thumbnail 
-                  </p>
+                  <p>Choose Thumbnail</p>
                 </label>
-              </div> 
-            </div> 
+              </div>
+            </div>
             <button className="fw-regular fs-14">Add Lesson</button>
           </form>
         </div>
@@ -124,9 +132,13 @@ export default function AdSingleEducation() {
       <div className="single-education">
         <div className="start flex ai-center jc-spaceb">
           <div className="flex ai-center">
-            <Link to={`/admin`} className="title fs-26 fw-semi">Educational Sections</Link>
+            <Link to={`/admin`} className="title fs-26 fw-semi">
+              Educational Sections
+            </Link>
             <span></span>
-            <p className="subtitle fs-16 fw-semi">{education && education.title}</p>
+            <p className="subtitle fs-16 fw-semi">
+              {education && education.title}
+            </p>
           </div>
           <div>
             <button
@@ -139,8 +151,12 @@ export default function AdSingleEducation() {
           </div>
         </div>
         <div className="items">
-          {lessons.map((lesson,index) => (
-            <Link to={`/admin/${educationid}/${lesson.id}`} className="item flex fd-column ai-center" key={index} >
+          {lessons.map((lesson, index) => (
+            <Link
+              to={`/admin/${educationid}/${lesson.id}`}
+              className="item flex fd-column ai-center"
+              key={index}
+            >
               <div className="image">
                 <video
                   className="img-res"

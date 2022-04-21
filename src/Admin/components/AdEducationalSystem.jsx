@@ -46,8 +46,12 @@ export default function AdEducationalSystem() {
             className="add-education-opa"
             onClick={() => setAddEducation(false)}
           ></div>
-          <form id="category-form" className="flex fd-column ai-center" onSubmit={createEducation}>
-          <p className="title fs-22 fw-semi">Add Category</p>
+          <form
+            id="category-form"
+            className="flex fd-column ai-center"
+            onSubmit={createEducation}
+          >
+            <p className="title fs-22 fw-semi">Add Category</p>
             <div className="input flex fd-column ai-start">
               <label htmlFor="">Title</label>
               <input
@@ -58,24 +62,25 @@ export default function AdEducationalSystem() {
                 }}
               />
             </div>
-            <label className="fs-14 fw-regular category-label" htmlFor="input-file-tag-thumbnail">
-                  <div className="camera-icon">
-                    <img  src={Camera}></img>
-                  </div>
-                  <input
-                    className="input-file-tag"
-                    id="input-file-tag-thumbnail"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      setImage(e.target.files[0]);
-                    }}
-                  />
-                  <p id="category-p">
-                    Choose Thumbnail 
-                  </p>
-                </label>
-  
+            <label
+              className="fs-14 fw-regular category-label"
+              htmlFor="input-file-tag-thumbnail"
+            >
+              <div className="camera-icon">
+                <img src={Camera}></img>
+              </div>
+              <input
+                className="input-file-tag"
+                id="input-file-tag-thumbnail"
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                }}
+              />
+              <p id="category-p">Choose Thumbnail</p>
+            </label>
+
             <button>Create Category</button>
           </form>
         </div>

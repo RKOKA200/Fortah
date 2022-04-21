@@ -18,7 +18,7 @@ export default function Forum() {
 
   return (
     <div id="client-forum-title" className="forum">
-      <p  className="title fs-26 fw-semi disc-title">Discussion</p>
+      <p className="title fs-26 fw-semi disc-title">Discussion</p>
       <div className="items flex fd-column ai-start">
         {discussions.map((item) => (
           <Link to={`/client/forum/${item.id}`} className="item flex ai-center">
@@ -30,7 +30,10 @@ export default function Forum() {
               />
             </div>
             <div className="texts">
-              <p id="f-title" className="title fs-24 fw-semi"> {item.title} </p>
+              <p id="f-title" className="title fs-24 fw-semi">
+                {" "}
+                {item.title}{" "}
+              </p>
               <p className="comments fs-14 fw-regular ">19 comments</p>
             </div>
           </Link>

@@ -2,32 +2,33 @@ import Half from "../images/half-logo.png";
 import Logo from "../images/logo.png";
 import { useState } from "react";
 import Email from "../images/email.svg";
-import Lock from "../images/lock.svg"
+import Lock from "../images/lock.svg";
 import Eye from "../images/eye.svg";
 import Eye2 from "../images/eye-hide.svg";
-import axios from "axios"
-import {useNavigate} from "react-router-dom"
-export default function Login({history}) {
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+export default function Login({ history }) {
   const [active, setActive] = useState("login");
   const [showPass, setShowPass] = useState(false);
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const login = () => {
-    axios.post("http://localhost/fortah-backend/user/login",{email,password}).then(res => {
-      const {type,id,token} = res.data
+    axios
+      .post("http://localhost/fortah-backend/user/login", { email, password })
+      .then((res) => {
+        const { type, id, token } = res.data;
 
-      localStorage.setItem("token", JSON.stringify(token))
-      localStorage.setItem("id", id)
-      localStorage.setItem("type", type)
-      if(type === 1){
-        navigate('/admin')
-      }else{
-        navigate('/client')
-      }
-      
-    })
-  }
+        localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("id", id);
+        localStorage.setItem("type", type);
+        if (type === 1) {
+          navigate("/admin");
+        } else {
+          navigate("/client");
+        }
+      });
+  };
 
   return (
     <div className="login flex fd-column ai-center">
@@ -80,9 +81,14 @@ export default function Login({history}) {
                 <label className="fs-14 fw-semi" htmlFor="email">
                   Email
                 </label>
-                <input className="fs-14 fw-semi" id="email" type="email" onChange={(e) => {
-                  setEmail(e.target.value)
-                }} />
+                <input
+                  className="fs-14 fw-semi"
+                  id="email"
+                  type="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="input flex ai-center">
@@ -96,7 +102,7 @@ export default function Login({history}) {
                   id="pass"
                   type={showPass ? "text" : "password"}
                   onChange={(e) => {
-                    setPassword(e.target.value)
+                    setPassword(e.target.value);
                   }}
                 />
               </div>
@@ -108,7 +114,9 @@ export default function Login({history}) {
                 alt=""
               />
             </div>
-            <button className="login-btn fs-16 fw-semi" onClick={login} >Login</button>
+            <button className="login-btn fs-16 fw-semi" onClick={login}>
+              Login
+            </button>
           </>
         ) : (
           <div className="register flex fd-column ai-center">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Vid from "../../images/vid1.jpg";
 import CoverLesson from "../../images/coverlesson.jpg";
 import CommentUser from "../../images/commentuser.png";
-import AdminPic from "../../images/admin.png"
+import AdminPic from "../../images/admin.png";
 import Mic from "../../images/Mic.svg";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
@@ -301,8 +301,9 @@ export default function AdSingleLesson() {
                                 <img src={AdminPic} className="img-res" />
                               </div>
                               <div className="texts">
-                                    <p className="title fs-16 fw-regular">Admin</p>
-                                <audio className="audio-class"
+                                <p className="title fs-16 fw-regular">Admin</p>
+                                <audio
+                                  className="audio-class"
                                   src={`http://localhost/fortah-backend/files/${item2.title}`}
                                   controls
                                 ></audio>

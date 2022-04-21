@@ -60,6 +60,7 @@ export default function CreateTopic({ closeModal, forumid }) {
             ></textarea>
           </div>
           <input
+            required
             type="file"
             accept="image/*"
             onChange={(e) => {

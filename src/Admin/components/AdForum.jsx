@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Camera from "../../images/camera.png"
+import Camera from "../../images/camera.png";
 import axios from "axios";
 export default function AdForum() {
   const [addNew, setAddNew] = useState(false);
@@ -50,7 +50,9 @@ export default function AdForum() {
           >
             <p className="title fs-22 fw-semi">Create Discussion</p>
             <div className="input flex fd-column ai-start">
-              <label className="fs-16 fw-regular" htmlFor="">Discussion Title</label>
+              <label className="fs-16 fw-regular" htmlFor="">
+                Discussion Title
+              </label>
               <input
                 value={title}
                 type="text"
@@ -58,13 +60,14 @@ export default function AdForum() {
                   setTitle(e.target.value);
                 }}
               />
-              <label className="fs-14 fw-regular file-label" htmlFor="input-file-tag">
+              <label
+                className="fs-14 fw-regular file-label"
+                htmlFor="input-file-tag"
+              >
                 <div className="camera-icon">
-                  <img  src={Camera}></img>
+                  <img src={Camera}></img>
                 </div>
-                <p>
-                  Add Photo 
-                </p>
+                <p>Add Photo</p>
                 <input
                   className="input-file-tag"
                   id="input-file-tag"
@@ -105,7 +108,7 @@ export default function AdForum() {
                 <img
                   style={{
                     width: "72px",
-                    height: "72px"
+                    height: "72px",
                   }}
                   src={`http://localhost/fortah-backend/files/${item.cover}`}
                   className="img-res"

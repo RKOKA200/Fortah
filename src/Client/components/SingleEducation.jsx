@@ -37,7 +37,9 @@ export default function SingleEducation() {
   return (
     <div className="single-education">
       <div className="start flex ai-center">
-      <Link to={`/client`} className="title fs-26 fw-semi">Educational Sections</Link>
+        <Link to={`/client`} className="title fs-26 fw-semi">
+          Educational Sections
+        </Link>
         <span></span>
         <p className="subtitle fs-16 fw-semi">{education && education.title}</p>
       </div>

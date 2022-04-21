@@ -140,13 +140,13 @@ export default function AdReplyComment() {
           <div className="info">
             <div className="flex ai-center">
               <Link to={"/admin/forum"} className="title fs-26 fw-semi">
-                Discussion 
+                Discussion
               </Link>
               <Link
                 to={`/admin/forum/${forumid}`}
                 className="subtitle fs-26 fw-semi"
               >
-                {singleDisc !== null && singleDisc.title} {" "}
+                {singleDisc !== null && singleDisc.title}{" "}
               </Link>
               <p className="fr-title fs-16 fw-semi">
                 {singleTopic !== null && singleTopic.title}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Vid from "../../images/vid1.jpg";
 import CoverLesson from "../../images/coverlesson.jpg";
 import CommentUser from "../../images/commentuser.png";
-import AdminPic from "../../images/admin.png"
+import AdminPic from "../../images/admin.png";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 export default function SingleLesson() {
@@ -53,7 +53,10 @@ export default function SingleLesson() {
     axios
       .post(
         "http://localhost/fortah-backend/education/createClientVideoComment",
-        { title: desc, video_id: parseInt(lessonid) }
+        {
+          title: desc,
+          video_id: parseInt(lessonid),
+        }
       )
       .then((res) => {
         getAllComments();
@@ -166,7 +169,9 @@ export default function SingleLesson() {
                         <img src={CommentUser} className="img-res" />
                       </div>
                       <div className="texts">
-                      <p className="title fs-16 fw-regular">{item.user_type === "1" ? "Admin" : "User" }</p>
+                        <p className="title fs-16 fw-regular">
+                          {item.user_type === "1" ? "Admin" : "User"}
+                        </p>
                         <p className="text fs-14 fw-light">{item.title}</p>
                       </div>
                     </div>
@@ -199,8 +204,9 @@ export default function SingleLesson() {
                                 <img src={AdminPic} className="img-res" />
                               </div>
                               <div className="texts">
-                                    <p className="title fs-16 fw-regular">Admin</p>
-                                <audio className="audio-class"
+                                <p className="title fs-16 fw-regular">Admin</p>
+                                <audio
+                                  className="audio-class"
                                   src={`http://localhost/fortah-backend/files/${item2.title}`}
                                   controls
                                 ></audio>
